@@ -1,7 +1,7 @@
 import Contact from '@/components/contact';
 
 const Home = () => {
-	return <Contact />;
+	return <Contact className='bg-black' />;
 };
 
 export default Home;
