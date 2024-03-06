@@ -52,8 +52,7 @@ export default function Contact() {
 		},
 	});
 
-	const webAppURL =
-		'https://script.google.com/macros/s/AKfycbwg-t8Tg-Y25Fh_mIZwX6XqIxqmVHV42cKl3roPNzhH6MVJ_Mo32EjeVrFkFvLtZ3ku/exec';
+	const webAppURL = process.env.NEXT_PUBLIC_WEB_APP_URL;
 
 	async function onSubmit(data) {
 		setLoading(true);
