@@ -20,20 +20,20 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 const FormSchema = z.object({
-	name: z
+	Name: z
 		.string({
 			required_error: 'Name is required',
 			invalid_type_error: 'Name must be a string',
 		})
 		.min(2),
-	email: z
+	Email: z
 		.string({
 			required_error: 'Email is required',
 			invalid_type_error: 'Email must be of format example@mail.domain',
 		})
 		.email(),
-	phone: z.string().refine(validator.isMobilePhone),
-	message: z.string(),
+	Phone: z.string().refine(validator.isMobilePhone),
+	Message: z.string(),
 });
 
 export default function Contact() {
@@ -45,10 +45,10 @@ export default function Contact() {
 	const form = useForm({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
-			name: '',
-			email: '',
-			phone: '',
-			message: '',
+			Name: '',
+			Email: '',
+			Phone: '',
+			Message: '',
 		},
 	});
 
@@ -117,7 +117,7 @@ export default function Contact() {
 								>
 									<FormField
 										control={form.control}
-										name='name'
+										name='Name'
 										render={({ field }) => (
 											<FormItem className='items-center justify-center w-full'>
 												<FormLabel className='text-sm bg-clip-text text-neutral-200 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50'>
@@ -138,7 +138,7 @@ export default function Contact() {
 
 									<FormField
 										control={form.control}
-										name='email'
+										name='Email'
 										render={({ field }) => (
 											<FormItem className='items-center justify-center w-full'>
 												<FormLabel className='text-sm bg-clip-text text-neutral-200 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50'>
@@ -159,7 +159,7 @@ export default function Contact() {
 
 									<FormField
 										control={form.control}
-										name='phone'
+										name='Phone'
 										render={({ field }) => (
 											<FormItem className='items-center justify-center w-full'>
 												<FormLabel className='text-sm bg-clip-text text-neutral-200 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50'>
@@ -180,7 +180,7 @@ export default function Contact() {
 
 									<FormField
 										control={form.control}
-										name='message'
+										name='Message'
 										render={({ field }) => (
 											<FormItem className='items-center justify-center w-full'>
 												<FormLabel className='text-sm bg-clip-text text-neutral-200 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50'>
