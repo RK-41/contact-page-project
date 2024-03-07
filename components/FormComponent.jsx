@@ -16,18 +16,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 const FormSchema = z.object({
-	Name: z
-		.string({
-			required_error: 'Name is required',
-			invalid_type_error: 'Name must be a string',
-		})
-		.min(2),
-	Email: z
-		.string({
-			required_error: 'Email is required',
-			invalid_type_error: 'Email must be of format example@mail.domain',
-		})
-		.email(),
+	Name: z.string().min(2),
+	Email: z.string().email(),
 	Phone: z.string().refine(validator.isMobilePhone),
 	Message: z.string(),
 });
@@ -94,7 +84,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 								</FormControl>
 
 								<FormMessage
-									msg={'Name must contain atleast 2 characters'}
+									msg={'Name must contain at least 2 characters'}
 									className='form-message'
 								/>
 							</FormItem>
