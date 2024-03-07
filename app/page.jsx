@@ -1,7 +1,8 @@
-import Contact from '@/components/Contact';
+import ContactComponent from '@/components/ContactComponent';
+import Contact from '@/components/ContactComponent';
 
 const Home = () => {
-	return <Contact />;
+	return <ContactComponent />;
 };
 
 export default Home;

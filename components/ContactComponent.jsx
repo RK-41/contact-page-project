@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import FormComponent from './FormComponent';
 
-const Contact = () => {
+const ContactComponent = () => {
 	const [loading, setLoading] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
@@ -40,4 +40,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default ContactComponent;
