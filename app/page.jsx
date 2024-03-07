@@ -1,4 +1,4 @@
-import Contact from '@/components/contact';
+import Contact from '@/components/Contact';
 
 const Home = () => {
 	return <Contact className='bg-black' />;

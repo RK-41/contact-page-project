@@ -71,6 +71,66 @@
 		@apply border-border;
 	}
 	body {
-		@apply text-foreground bg-black;
+		@apply text-foreground bg-gradient-to-b from-black bg-purple-950 antialiased;
 	}
+}
+
+.parent-container {
+	@apply w-full min-h-screen md:items-center md:justify-center overflow-hidden;
+}
+
+.container {
+	@apply flex-col items-start justify-center px-6;
+}
+
+.heading {
+	@apply max-h-[128px] text-3xl min-[360px]:text-5xl sm:text-7xl px-6 py-5 text-center bg-clip-text text-transparent bg-gradient-to-b from-purple-700 bg-purple-300 bg-opacity-80 hover:from-purple-600 hover:bg-purple-100 hover:bg-opacity-100;
+}
+
+.loading-container {
+	@apply text-3xl md:text-5xl flex items-center justify-center flex-col px-8 w-full py-20;
+}
+
+.submission-container {
+	@apply text-xl min-[360px]:text-3xl md:text-5xl flex items-center justify-center flex-col px-8 bg-inherit border-white w-full py-10 md:py-20;
+}
+
+.loading-message,
+.submission-message {
+	@apply text-white font-light text-center justify-center mx-auto py-10 animate-pulse;
+}
+
+.button-container {
+	@apply flex items-center gap-4 my-10 animate-bounce;
+}
+
+.button {
+	@apply w-[240px] text-lg font-light mx-auto bg-gradient-to-b from-purple-700 bg-inherit bg-opacity-50 shadow-lg shadow-black;
+}
+.form {
+	@apply space-y-4 h-full border rounded-xl p-3 min-[400px]:p-5 mb-5 sm:w-4/5 sm:min-w-[590px] mx-auto;
+}
+
+.form-item {
+	@apply items-center justify-center w-full;
+}
+
+.form-label {
+	@apply text-sm bg-clip-text text-neutral-200 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50;
+}
+
+.form-control {
+	@apply relative hover:left-0.5;
+}
+
+.form-message {
+	@apply bg-white border-red-600 border-2 rounded-[4px] min-w-[100px] p-1 z-10 shadow-red-600 shadow-md text-black relative -top-3 left-3;
+}
+
+.span {
+	@apply text-red-600;
+}
+
+.textarea {
+	@apply h-[100px];
 }
