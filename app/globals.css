@@ -134,3 +134,11 @@
 .textarea {
 	@apply h-[100px];
 }
+
+.spinner-container {
+	@apply animate-spin my-10;
+}
+
+.spinner {
+	@apply animate-spin text-center text-5xl m-auto invert;
+}

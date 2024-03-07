@@ -24,13 +24,13 @@ const ContactComponent = () => {
 					<div className='loading-container'>
 						<div className='loading-message'>Submitting your form...</div>
 
-						<div className='animate-spin'>
+						<div className='spinner-container'>
 							<Image
 								src='/asset/spinner.svg'
 								alt='spinner'
 								width={100}
 								height={100}
-								className='animate-spin text-center text-5xl m-auto invert'
+								className='spinner'
 							/>
 						</div>
 					</div>
