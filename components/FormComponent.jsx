@@ -81,14 +81,16 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 	// Render the form component
 	return (
 		<Form {...form} className='form'>
+			{/* Conditionally render form if not submitted */}
 			{!submitted ? (
 				<form
-					onSubmit={form.handleSubmit(onSubmit)}
+					onSubmit={handleSubmit(onSubmit)} // Handle form submission using handleSubmit
 					className='form'
 					name='contact-form'
 				>
+					{/* Render form field using FormField component */}
 					<FormField
-						control={form.control}
+						control={form.control} // Pass form control to FormField
 						name='Name'
 						render={({ field }) => (
 							<FormItem className='form-item'>
@@ -100,6 +102,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 									<Input placeholder='Enter your full name' {...field} />
 								</FormControl>
 
+								{/* Display validation error message if any */}
 								<FormMessage
 									msg={'Name must contain at least 2 characters'}
 									className='form-message'
@@ -108,8 +111,9 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 						)}
 					/>
 
+					{/* Render form field using FormField component */}
 					<FormField
-						control={form.control}
+						control={form.control} // Pass form control to FormField
 						name='Email'
 						render={({ field }) => (
 							<FormItem className='form-item'>
@@ -121,6 +125,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 									<Input placeholder='example@email.domain' {...field} />
 								</FormControl>
 
+								{/* Display validation error message if any */}
 								<FormMessage
 									msg={'Email must be of the fomat example@email.domain'}
 									className='form-message'
@@ -129,8 +134,9 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 						)}
 					/>
 
+					{/* Render form field using FormField component */}
 					<FormField
-						control={form.control}
+						control={form.control} // Pass form control to FormField
 						name='Phone'
 						render={({ field }) => (
 							<FormItem className='form-item'>
@@ -142,6 +148,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 									<Input placeholder='Enter your phone number' {...field} />
 								</FormControl>
 
+								{/* Display validation error message if any */}
 								<FormMessage
 									msg={'Enter a valid phone number'}
 									className='form-message'
@@ -150,8 +157,9 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 						)}
 					/>
 
+					{/* Render form field using FormField component */}
 					<FormField
-						control={form.control}
+						control={form.control} // Pass form control to FormField
 						name='Message'
 						render={({ field }) => (
 							<FormItem className='form-item'>
@@ -175,6 +183,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 					</div>
 				</form>
 			) : (
+				// Display submission confirmation message
 				<>
 					<div className='submission-container'>
 						<div className='submission-message'>
@@ -182,6 +191,8 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 							<br />
 							we&apos;ll get back to you shortly.
 						</div>
+
+						{/* A button for submittin another form */}
 						<div className='button-container'>
 							<Button className='button' disabled={loading}>
 								<a href='/'>Submit Another Form</a>
