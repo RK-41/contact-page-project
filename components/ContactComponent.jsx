@@ -1,10 +1,12 @@
+// Directive to make React treat this component and its dependencies as client-side only
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import FormComponent from './FormComponent';
+import Image from 'next/image'; // Import for optimized image handling in Next.js
+import FormComponent from './FormComponent'; // Import the form component
 
 const ContactComponent = () => {
+	// State variables for loading and submitted states
 	const [loading, setLoading] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
@@ -13,8 +15,10 @@ const ContactComponent = () => {
 			<div className='container'>
 				<div className='heading'>Contact Us</div>
 
+				{/* Conditionally render content based on loading state */}
 				{!loading ? (
 					<FormComponent
+						// Pass loading and submitted states to FormComponent for coordination
 						loading={loading}
 						setLoading={setLoading}
 						submitted={submitted}
@@ -23,8 +27,8 @@ const ContactComponent = () => {
 				) : (
 					<div className='loading-container'>
 						<div className='loading-message'>Submitting your form...</div>
-
 						<div className='spinner-container'>
+							{/* Render a spinner image while loading */}
 							<Image
 								src='/asset/spinner.svg'
 								alt='spinner'
@@ -40,4 +44,5 @@ const ContactComponent = () => {
 	);
 };
 
+// Export the component for use in other parts of the application
 export default ContactComponent;

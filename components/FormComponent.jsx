@@ -1,8 +1,10 @@
+// Import necessary libraries and components for form handling and validation
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import validator from 'validator';
+import validator from 'validator'; // For phone number validation
 
+// Import custom UI components for buttons, forms, and inputs
 import { Button } from '@/components/ui/button';
 import {
 	Form,
@@ -15,18 +17,28 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+// Define the validation schema using Zod for form fields
 const FormSchema = z.object({
-	Name: z.string().min(2),
-	Email: z.string().email(),
-	Phone: z.string().refine(validator.isMobilePhone),
+	Name: z.string().min(2, 'Name must contain at least 2 characters'), // Set custom error message
+	Email: z.string().email('Email must be of the format example@email.domain'), // Set custom error message
+	Phone: z
+		.string()
+		.refine(validator.isMobilePhone, 'Enter a valid phone number'), // Use validator.isMobilePhone for phone number validation
 	Message: z.string(),
 });
 
+// Get the web app URL from environment variables
 const webAppURL = process.env.NEXT_PUBLIC_WEB_APP_URL;
 
 const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
-	const { register, ...form } = useForm({
-		resolver: zodResolver(FormSchema),
+	// Use the `useForm` hook from react-hook-form to manage form state and validation
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		...form
+	} = useForm({
+		resolver: zodResolver(FormSchema), // Set the Zod schema for validation
 		defaultValues: {
 			Name: '',
 			Email: '',
@@ -35,26 +47,30 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 		},
 	});
 
+	// Async function to handle form submission
 	async function onSubmit(data) {
-		setLoading(true);
+		setLoading(true); // Set loading state to true while submitting
 
+		// Create a form element to manually submit data
 		const formElement = document.createElement('form');
 
+		// Loop through each field in the schema and create input elements
 		for (const [key, value] of Object.entries(FormSchema.shape)) {
 			const input = document.createElement('input');
 			input.name = key;
-			input.value = data[register(key).name];
+			input.value = data[register(key).name]; // Get the value from form data using register
 			formElement.appendChild(input);
 		}
 
+		// Send a POST request with form data using FormData and handle response
 		await fetch(webAppURL, {
 			method: 'POST',
-			body: new FormData(formElement),
-			mode: 'no-cors',
+			body: new FormData(formElement), // Create form data from the created form element
+			mode: 'no-cors', // Handle CORS if necessary
 		})
 			.then((response) => {
-				setLoading(false);
-				setSubmitted(true);
+				setLoading(false); // Set loading state to false after successful submission
+				setSubmitted(true); // Set submitted state to true to display success message
 			})
 			.catch((error) => {
 				alert('Error occured');
@@ -62,6 +78,7 @@ const FormComponent = ({ loading, setLoading, submitted, setSubmitted }) => {
 			});
 	}
 
+	// Render the form component
 	return (
 		<Form {...form} className='form'>
 			{!submitted ? (
